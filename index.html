@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ranganathan Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Montserrat", sans-serif;
+        }
+        .w3-row-padding img {
+            margin-bottom: 12px;
+        }
+        .w3-sidebar {
+            width: 120px;
+            background: #000000;
+        }
+        #main {
+            margin-left: 120px;
+        }
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0;
+            }
+        }
+        .skills-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .skills-category {
+            flex: 1;
+            margin: 10px;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+        }
+        .skill {
+            margin: 10px;
+            text-align: center;
+        }
+        .skill img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgb(247, 1, 1);
+        }
+        .w3-button {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .w3-button:hover {
+            background-color: #0051ff;
+            color: #fff;
+        }
+        .project-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ad982b;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-item:hover {
+            background-color: #f3aa0b;
+            box-shadow: 0 4px 8px rgba(149, 255, 19, 0.861);
+        }
+        .w3-top {
+            z-index: 1000;
+        }
+        .w3-padding-large {
+            padding: 32px 16px;
+        }
+        .w3-text-light-grey {
+            color: #d3d3d3;
+        }
+        .w3-hover-opacity {
+            opacity: 0.8;
+        }
+        .w3-hover-opacity:hover {
+            opacity: 1;
+        }
+        .footer {
+            background-color: #000000;
+            color: #f01400;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #1e90ff;
+        }
+        
+        .section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #000000;
+    box-shadow: 0 0 30px rgba(255, 238, 0, 0.919);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    text-align: center;
+}
+
+.section:hover {
+    background-color: #540e45; /* Slightly lighter background on hover */
+    box-shadow: 0 0 40px rgb(247, 241, 241); /* More intense shadow on hover */
+    transform: translateY(-5px); /* Lift the section slightly */
+}
+
+/* Optional: Add a focus effect if sections can be focused via keyboard navigation */
+.section:focus {
+    outline: none;
+    border: 2px solid #00ffea; /* Highlight border on focus */
+    box-shadow: 0 0 40px rgba(0, 251, 255, 1);
+}
+
+        
+        .section h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .section p, .section ul {
+            margin-bottom: 10px;
+            text-align: left;
+            color: #fbfbfb;
+        }
+        .w3-row-padding {
+            margin: 0 -16px;
+        }
+        .w3-col {
+            padding: 0 16px;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(30, 111, 33, 0.681);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .section-header {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 2px solid #fff200;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .section-header::after {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background-color: #00ff3c;
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+        }
+        .contact-form input[type="submit"] {
+            background-color: #555;
+            color: #fc0000;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form input[type="submit"]:hover {
+            background-color: #ff0000;
+        }
+        
+    </style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <img src="C:\Users\91701\Downloads\1000015960__1_-removebg-preview.png" style="width:100%" alt="Avatar">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>HOME</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-user w3-xxlarge"></i>
+        <p>ABOUT</p>
+    </a>
+    <a href="#skills" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-laptop w3-xxlarge"></i>
+        <p>SKILLS</p>
+    </a>
+    <a href="#certifications" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-graduation-cap w3-xxlarge"></i>
+        <p>CERTIFICATIONS</p>
+    </a>
+    <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-code w3-xxlarge"></i>
+        <p>PROJECTS</p>
+    </a>
+    
+    <a href="#experience" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-briefcase w3-xxlarge"></i>
+        <p>EXPERIENCE</p>
+    </a>
+    <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-bank w3-xxlarge"></i>
+        <p>EDUCATION</p>
+    </a>
+    <a href="#resume" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-file-pdf-o w3-xxlarge"></i>
+        <p>RESUME</p>
+    </a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CONTACT</p>
+    </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+        <a href="#" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button" style="width:20% !important">ABOUT </a>
+        <a href="#skills" class="w3-bar-item w3-button" style="width:20% !important">SKILLS</a>
+        <a href="#education" class="w3-bar-item w3-button" style="width:20% !important">EDUCATION</a>
+        <a href="#projects" class="w3-bar-item w3-button" style="width:20% !important">PROJECTS</a>
+        <a href="#experience" class="w3-bar-item w3-button" style="width:20% !important">EXPERIENCE</a>
+        <a href="#resume" class="w3-bar-item w3-button" style="width:20% !important">RESUME</a>
+        <a href="#contact" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
+    </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+
+    <!-- Header/Home -->
+    
+    <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+        <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Ranganathan</h1>
+        <p>Software Engineer, AI&ML Enthusiast & Video Editor</p>
+       
+    </header>
+
+    <!-- About Section -->
+   <div  class="section">
+    <div  class="w3-content w3-justify w3-text-light-grey w3-padding-64" id="about">
+        <h2 class="section-header">About Me</h2>
+        <hr style="width:200px" class="w3-opacity">
+        <p>I am  Ranganathan Sadhula, a passionate software developer and AI&ML enthusiast. With a diverse skill set ranging from front-end development to deep learning, I strive to create innovative and efficient solutions. My journey in the tech world has been fueled by a constant desire to learn and adapt to new technologies.</p>
+
+        <div  class="section">
+            <div  class="w3-content w3-justify w3-text-light-grey w3-padding-64" id="skills">
+        <h3 class="section-header">Skills</h3>
+        <p>Proficient in:</p>
+        <div class="skills-categories">
+            <div class="skills-category">
+                <h4>Programming Languages</h4>
+                <div class="skills-list">
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"><p>C</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><p>Python</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><p>Java</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><p>JavaScript</p></div>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h4>Frontend Technologies</h4>
+                <div class="skills-list">
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><p>HTML5</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><p>CSS3</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"><p>React</p></div>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h4>Backend Technologies</h4>
+                <div class="skills-list">
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"><p>MySQL</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"><p>PHP</p></div>
+                    <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"><p>Node.js</p></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-header">Technologies & Tools</h3>
+        <div class="skills-list">
+            <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"><p>Git</p></div>
+            <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"><p>Docker</p></div>
+            <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes"><p>Kubernetes</p></div>
+            <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"><p>Linux</p></div>
+        </div>
+    </div>
+
+    
+    <div  class="section">
+        <div  class="w3-content w3-justify w3-text-light-grey w3-padding-64" id="certifications">
+        <h3 class="section-header">Certificates</h3>
+        <div class="slider">
+            <div class="slide">
+                <img src="C:\MY-PROTO\MS - Certificates-13[1] Ranganathan[1]_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slider">
+                <div class="slide">
+                    <img src="C:\MY-PROTO\1-2ded3792-7c54-429d-b6b9-16222d1495b5 (1)-merged (1) (1)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slider">
+                <div class="slide">
+                    <img src="C:\MY-PROTO\59r4vtiv_1722794000357_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slider">
+                <div class="slide">
+                    <img src="C:\MY-PROTO\unnamed (1) (1).png" alt="Certificate 1">
+            </div>
+
+
+            <div class="slider">
+                <div class="slide">
+                    <img src="C:\MY-PROTO\I am sharing 'TIHEXL-728' with you (1)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\IBM BD0231EN Certificate _ edX (1)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\IBM DB0151EN Certificate _ edX (1)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\Google Analytics Certification _ Google_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\certificate2605172_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\certificate4396574_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\RanganathanSadhula-India_Internship-certificate (3)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\RanganathanSadhula-India_Internship-certificate (4)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\RanganathanSadhula-India_Internship-certificate (5)_page-0001.jpg" alt="Certificate 1">
+            </div>
+
+            <div class="slide">
+                <img src="C:\MY-PROTO\RanganathanSadhula-Programming Esse-certificate (2)_page-0001.jpg" alt="Certificate 1">
+            </div>
+ 
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <div class="w3-content w3-justify w3-text-green w3-padding-64" id="projects">
+            <h2 class="w3-text-light-grey">Projects</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <div class="section"></div>
+            <div class="project-item">
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">E-Commerce Website</a></h3>
+                
+                <p>Developed an eCommerce website inspired by Flipkart, featuring product listings, user authentication, and a shopping cart.</p>
+            </div>
+            <div class="section">
+            <div class="project-item">
+                
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">AI Chat Bot</a></h3>
+                <p>Created an AI chatbot using natural language processing techniques to assist users with various queries and tasks.</p>
+            </div>
+            <div class="section"></div>
+            <div class="project-item">
+                
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">Dog Breed Detection</a></h3>
+                <p>Implemented a deep learning model to identify different dog breeds from images using convolutional neural networks (CNNs).</p>
+            </div>
+            <div class="section"></div>
+            <div class="project-item">
+                
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">Handwritten Digit Recognition</a></h3>
+                <p>Developed a machine learning model to recognize handwritten digits from the MNIST dataset with high accuracy.</p>
+            </div>
+            <div class="section"></div>
+            <div class="project-item">
+            
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">Hand Sign Language Recognition</a></h3>
+                <p>Built a system to interpret hand sign language gestures using computer vision and deep learning techniques.</p>
+            </div>
+            <div class="section"></div>
+            <div class="project-item">
+                
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">Image Classification with CNNs</a></h3>
+                <p>Implemented a convolutional neural network to classify images into different categories with high precision.</p>
+            </div>
+            <div class="section"></div>
+            <div class="project-item">
+                
+                <h3><a href="https://github.com/RanganathanSadhula" target="_blank">Smart Traffic Management System</a></h3>
+                <p>Developed a system to manage traffic flow efficiently, including emergency vehicle detection and alerting mechanisms.</p>
+            </div>
+        </div>
+
+        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="experience">
+            <h2 class="w3-text-light-grey">Experience</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <div class="section">
+                <h3>Internship at Mssquare Technologies</h3>
+                <p>May 2024 - July 2024</p>
+                <p>Worked on various AI and ML projects including AI Chat Bot, Sign Language recognition, Image Classification with CNNs, and Hand sign language recognition.</p>
+                <a href="https://www.linkedin.com/in/raghav-s-mr97/" class="w3-hover-opacity"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+            </div>
+        </div>
+
+        <div  class="w3-content w3-justify w3-text-light-grey w3-padding-64" id="education">
+        <h3 class="section-header">Education</h3>
+        <div class="w3-row-padding">
+            <div class="w3-col m6">
+                <h4>B. Tech in CSE(AI&ML)</h4>
+                <p>Lakireddy Bali Reddy College of Engineering (2021-Till..,)</p>
+                <p>CGPA: 8.7(upto 6th sem.)</p>
+            </div>
+            <div class="w3-col m6">
+                <h4>Intermediate (MPC)</h4>
+                <p>Sri Chaitanya Junior College (2019-2021)</p>
+                <p>Percentage: 96.4%</p>
+            </div>
+            <div class="w3-col m6">
+                <h4>SSC</h4>
+                <p>Siddhartha English Medium High School (2015-2018)</p>
+                <p>Percentage: 78.4%</p>
+            </div>
+        </div>
+
+        <div  class="w3-content w3-justify w3-text-light-grey w3-padding-64" id="resume"></div>
+        <h3 class="section-header">Resume</h3>
+        <a href="C:\MY-PROTO\White Clean Minimalist Business Real Estate Resume (6).pdf" class="w3-button w3-light-grey w3-block" download>Download Resume</a>
+
+        <div class="w3-content w3-justify w3-text-grey w3-padding-64 section" id="contact">
+            <h2 class="w3-text-light-grey">Contact</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <div class="w3-section">
+                <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Email: ranganathansadhula@gmail.com</p>
+                <p><i class="fa fa-linkedin fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> <a href="https://www.linkedin.com/in/raghav-s-mr97/" target="_blank">LinkedIn</a></p>
+                <p><i class="fa fa-github fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> <a href="https://github.com/RanganathanSadhula" target="_blank">GitHub</a></p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Find me on social media.</p>
+        <a href="https://github.com/RanganathanSadhula" class="w3-hover-opacity">GitHub</a> |
+        <a href="https://www.linkedin.com/in/raghav-s-mr97/" class="w3-hover-opacity">LinkedIn</a> |
+        <a href="https://www.instagram.com/___raghav___97/" class="w3-hover-opacity">Instagram</a>
+
+        <p>© 97 Sadhula Ranganathan.</p>
+    </footer>
+
+</div>
+
+<script>
+    // JavaScript for the slideshow
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
+</body>
+</html>
+
